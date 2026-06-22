@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*") //Aqui podemos definir los dominios permitidos con sus respectivos puertos
 @RestController
 @RequestMapping("/api/v1/productos")
 public class ProductoController {

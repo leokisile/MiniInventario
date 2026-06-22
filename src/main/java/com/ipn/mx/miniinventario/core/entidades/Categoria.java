@@ -1,5 +1,8 @@
 package com.ipn.mx.miniinventario.core.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -31,5 +34,6 @@ public class Categoria implements Serializable {
     private LocalDate createAt;
 
     @OneToMany(mappedBy = "idCategoria", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Producto> productos = new HashSet<Producto>();
 }

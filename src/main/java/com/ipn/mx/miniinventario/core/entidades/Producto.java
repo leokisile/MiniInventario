@@ -1,9 +1,12 @@
 package com.ipn.mx.miniinventario.core.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -37,5 +40,7 @@ public class Producto implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCategoria", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnoreProperties({"productos", "hibernateLazyInitializer", "handler"})
     private Categoria idCategoria;
 }
